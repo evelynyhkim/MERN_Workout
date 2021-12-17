@@ -1,4 +1,5 @@
 const WorkoutController = require('../controllers/workout.controller')
+const { authenticate } = require('../config/jwt.config');
 
 module.exports = (app) => {
     app.get('/api/workouts/all', WorkoutController.getAll)

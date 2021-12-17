@@ -1,8 +1,8 @@
-const Workout = require('../models/workout.model')
+const Workout = require('../models/workout.model');
 
 module.exports = {
     getAll: (req, res) => {
-        Workout.find()
+        Workout.find({userid: req.params.id})
         .then(workouts => {
             console.log('getAll')
             res.json(workouts)

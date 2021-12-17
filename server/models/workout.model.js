@@ -1,4 +1,5 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const ObjectId = mongoose.Types.ObjectId;
 
 const WorkoutSchema = new mongoose.Schema({
     name: {
@@ -31,9 +32,13 @@ const WorkoutSchema = new mongoose.Schema({
     caloriesBurnt: {
         type: Number,
         default: 0
+    },
+    userid: {
+        type: ObjectId,
+        required: [true, 'UserID missing from request.  Please Contact a System Administrator']     
     }
-}, {timestamp: true})
+}, {timestamps: true})
 
 const Workout = mongoose.model("Workout", WorkoutSchema)
 
-module.exports = Workout
+module.exports = Workout;
