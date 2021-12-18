@@ -3,7 +3,6 @@ import axios from 'axios';
 import { navigate } from '@reach/router';
 
 const Register = () => {
-    const [errors, setErrors] = useState({});
     const [newUser, setNewUser] = useState({
         name: "",
         email: "",
@@ -29,22 +28,21 @@ const Register = () => {
                 <label htmlFor="firstName"> First Name: </label>
                 <input type="text" name="firstName" />
                 <br />
-                {errors.name ? <span>{errors.firstName.message}</span> : null}<br />
+                <br />
                 <label htmlFor="lastName">Last Name: </label>
                 <input type="text" name="lastName" />
                 <br />
-                {errors.name ? <span>{errors.lastName.message}</span> : null}<br />
                 <label htmlFor="email">Email: </label>
                 <input type="email" name="email" />
                 <br />
-                {errors.name ? <span>{errors.email.message}</span> : null}<br />
+                <br />
                 <label htmlFor="password">Password: </label>
                 <input type="password" name="password" />
                 <br />
-                {errors.name ? <span>{errors.password.message}</span> : null}<br />
+                <br />
                 <label htmlFor="confirm-pw">Confirm pw: </label>
                 <input type="password" name="confirmpw" /><br />
-                {errors.name ? <span>{errors.confirm_pw.message}</span> : null}<br />
+                <br />
                 <input type="submit" value="Register!" />
             </form>
         </div>
