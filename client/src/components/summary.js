@@ -1,4 +1,5 @@
-import react, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
 
 const Summary = (props) => {
     const {id} = props;

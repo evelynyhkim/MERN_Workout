@@ -3,6 +3,7 @@ import axios from 'axios';
 import { navigate } from '@reach/router';
 
 const Register = () => {
+    const [errors, setErrors] = useState({})
     const [newUser, setNewUser] = useState({
         name: "",
         email: "",
@@ -31,6 +32,7 @@ const Register = () => {
                 <br />
                 <label htmlFor="lastName">Last Name: </label>
                 <input type="text" name="lastName" />
+                <br />
                 <br />
                 <label htmlFor="email">Email: </label>
                 <input type="email" name="email" />
