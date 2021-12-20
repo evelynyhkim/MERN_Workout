@@ -11,7 +11,7 @@ const Login = (props) => {
         event.preventDefault();
         axios.post("http://localhost:8000/api/users/login", {
             email: email,
-            passowrd: password,
+            password: password,
         },
             {
                 withCredentials: true,
