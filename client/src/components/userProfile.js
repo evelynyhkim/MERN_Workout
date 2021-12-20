@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import axios from 'axios';
-
+import PhotoUpload from './photoUpload';
 const UserProfile = (props) => {
     const [user, setUser] = useState([]);
     const [workouts, setWorkouts] = useState([]);
@@ -36,8 +36,11 @@ const UserProfile = (props) => {
     return (
         <div>
             <h1>{user.firstName} {user.lastName}'s profile</h1>
-            {/* User before and after photos */}
-            {/* File Upload component */}
+            {/* User before photo */}
+            {/* User after photo */}
+            <br/>
+            <br/>
+            <PhotoUpload />
             <h3>User Workouts</h3>
             <table>
                 <thead>
