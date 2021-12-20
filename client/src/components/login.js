@@ -20,8 +20,7 @@ const Login = (props) => {
             .then((res) => {
                 console.log(res, "res")
                 console.log(res.data, "is res data!")
-                navigate("/workouts", { state: { idForNav: res.data.userId } });
-                navigate("/workouts")
+                navigate(`/user/profile/${res.data.userId}`, { state: { idForNav: res.data.userId } });
             })
             .catch((err) => {
                 console.log(err.response.data);
