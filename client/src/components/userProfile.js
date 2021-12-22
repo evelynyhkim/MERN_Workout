@@ -3,14 +3,14 @@ import axios from 'axios';
 import PhotoUpload from './photoUpload';
 const UserProfile = (props) => {
     const [user, setUser] = useState([]);
-    const [workouts, setWorkouts] = useState([]);
+    const [workouts, setWorkouts] = useState([]);   
     //logged in userId
     const { id } = props;
     //all workouts where userid matches logged user id 
     const userWorkouts = workouts.filter(workout => workout.userid === id)
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/users/${id}`)
+        axios.get(`http://linuxhome:8000/api/users/${id}`)
         .then((res) => {
             console.log("Getting profile for " + res.data.firstName, res.data.lastName);
             setUser(res.data);
@@ -22,7 +22,7 @@ const UserProfile = (props) => {
 
     useEffect(() => {
         axios 
-            .get('http://localhost:8000/api/workouts/all')
+            .get('http://linuxhome:8000/api/workouts/all')
             .then((res) => {
                 console.log("Loading all workouts")
                 setWorkouts(res.data)
@@ -40,7 +40,7 @@ const UserProfile = (props) => {
             {/* User after photo */}
             <br/>
             <br/>
-            <PhotoUpload />
+            <PhotoUpload userID={id} />
             <h3>User Workouts</h3>
             <table>
                 <thead>

@@ -4,9 +4,10 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const multer = require('multer');
 const app = express();
-const { authenticate } = require('./config/jwt.config');
+///const { authenticate } = require('./config/jwt.config');
 
 global.__basedir = __dirname;
+console.log(__dirname);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -16,7 +17,9 @@ require("./config/mongoose.config");
 //multer configuration
 const storageEngine = multer.diskStorage ({      
     destination:'./uploads/',
-    filename: function (req, file, cb) {
+    filename: function (req, file, cb) {  
+        console.log(file);
+        console.log(req);      
         cb(null, file.fieldname);      
     }
 });
@@ -43,7 +46,7 @@ app.use(cors({
 
 
 //Route for uploading files.
-app.post('/api/upload', authenticate, upload.any(), function (req, res, next) {   
+app.post('/api/upload', upload.any(), function (req, res, next) {   
     res.json({ message: "Successfully uploaded files" });
 });
 
