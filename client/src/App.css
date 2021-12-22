@@ -53,3 +53,8 @@
 .flex-4 {
   flex: 3;
 }
+
+.cx-container-center {
+  margin-right: auto;
+  margin-left: auto;    
+}

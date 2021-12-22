@@ -1,21 +1,20 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import {Link, navigate} from '@reach/router';
+import Navbar from './Navbar';
 
-const NewWorkout = (props)=>{
+const EditWorkout = (props)=>{
     const [errors, setErrors] = useState({});
-
     const [name, setName] = useState("");
     const [date, setDate] = useState("");
     const [type, setType] = useState(false);
     const [description, setDescription] = useState("");
     const [duration, setDuration] = useState("");
     const [caloriesBurnt,setCaloriesBurnt] = useState("");
-
     const {id} = props;
 
     useEffect(()=>{
-        axios.get(`http://localhost:8000/api/workouts/${id}`)
+        axios.get(`http://linuxhome:8000/api/workouts/${id}`)
             .then((res)=>{
                 console.log(res.data);
                 setName(res.data.name);
@@ -34,7 +33,7 @@ const NewWorkout = (props)=>{
         e.preventDefault();
         axios
             .put(
-                `http://localhost:8000/api/workouts/${id}/update`,
+                `http://linuxhome:8000/api/workouts/${id}/update`,
                 {
                     name,
                     date,
@@ -62,21 +61,29 @@ const NewWorkout = (props)=>{
     
     return (
         <div>
-            <form onSubmit={submitHandler}>
-                <div className="form-group">
-                    <label htmlFor="name">Name</label>
+            <Navbar id={id}/>
+            <form onSubmit={submitHandler} style={{maxWidth: "600px",
+                                                   marginRight: "auto",
+                                                   marginLeft: "auto",
+                                                   marginTop: "3em"                                            
+                                            }}>
+                <div className="form-group d-flex align-items-center">
+                    <label className="form-label fs-4 me-3 flex-1 text-end" htmlFor="name">Name:</label>
                     <input
+                        className="form-control flex-3"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         name="name"
                         type="text"
+                        
                     />
                     <br />
                     {errors.name ? <span>{errors.name.message}</span> : null}
                 </div>
-                <div className="form-group">
-                    <label htmlFor="date">Date</label>
+                <div className="form-group d-flex">
+                    <label className="form-label fs-4 me-3 flex-1 text-end" htmlFor="date">Date:</label>
                     <input
+                        className="form-control flex-3"
                         value={date}
                         onChange={(e) => setDate(e.target.value)}
                         name="date"
@@ -85,9 +92,10 @@ const NewWorkout = (props)=>{
                     <br />
                     {errors.date ? <span>{errors.date.message}</span> : null}
                 </div>
-                <div>
-                    <label htmlFor="description">description</label>
-                    <input
+                <div className="form-group d-flex">
+                    <label className="form-label fs-4 me-3 flex-1 text-end" htmlFor="description">description:</label>
+                    <textarea
+                        className="form-control flex-3"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
                         name="description"
@@ -96,9 +104,10 @@ const NewWorkout = (props)=>{
                     <br />
                     {errors.description ? <span>{errors.description.message}</span> : null}
                 </div>
-                <div>
-                    <label htmlFor="duration">duration</label>
+                <div className="form-group d-flex">
+                    <label className="form-label fs-4 me-3 flex-1 text-end" htmlFor="duration">duration:</label>
                     <input
+                        className="form-control flex-3"
                         value={duration}
                         onChange={(e) => setDuration(e.target.value)}
                         name="duration"
@@ -107,9 +116,10 @@ const NewWorkout = (props)=>{
                     <br />
                     {errors.duration ? <span>{errors.duration.message}</span> : null}
                 </div>
-                <div>
-                    <label htmlFor="type">Type</label>
-                    <select
+                <div className="form-group d-flex">
+                    <label className="form-label fs-4 me-4 flex-1 text-end" htmlFor="type">Type:</label>
+                    <select 
+                        className="form-select flex-3"                        
                         value={type}
                         onChange={(e) => setType(e.target.value)}
                         name="type"
@@ -125,9 +135,10 @@ const NewWorkout = (props)=>{
                     <br />
                     {errors.type ? <span>{errors.type.message}</span> : null}
                 </div>
-                <div>
-                    <label htmlFor="caloriesBurnt">Calories Burnt</label>
+                <div className="form-group d-flex">
+                    <label className="form-label fs-4 me-3 flex-1 text-end" htmlFor="caloriesBurnt">Calories Burnt:</label>
                     <input
+                        className="form-control flex-3"
                         value={caloriesBurnt}
                         onChange={(e) => setCaloriesBurnt(e.target.value)}
                         name="caloriesBurnt"
@@ -136,10 +147,10 @@ const NewWorkout = (props)=>{
                     <br />
                     {errors.caloriesBurnt ? <span>{errors.caloriesBurnt.message}</span> : null}
                 </div>
-                <button>Update Workout</button>
+                <button className="btn btn-primary mt-3">Modify Workout</button>
             </form>
         </div>
     );
 }
 
-export default NewWorkout;
+export default EditWorkout;

@@ -10,7 +10,7 @@ const AllWorkouts = (props) => {
     const [workoutList, setWorkoutList] = useState([]);
 
     useEffect(()=>{
-        axios.get("http://localhost:8000/api/workouts/all")
+        axios.get("http://linuxhome:8000/api/workouts/all")
         .then((res)=>{
             console.log(res);
             console.log(res.data);
@@ -24,7 +24,7 @@ const AllWorkouts = (props) => {
 
     const deleteWorkout = (idFromBelow) => {
         axios
-        .delete(`http://localhost:8000/api/${idFromBelow}/delete`)
+        .delete(`http://linuxhome:8000/api/${idFromBelow}/delete`)
         .then((res) => {
             console.log(res.data);
             navigate("/home");

@@ -20,7 +20,7 @@ const Register = () => {
     };
     const register = (e) => {
         e.preventDefault();
-        axios.post("http://localhost:8000/api/users/register", user, 
+        axios.post("http://linuxhome:8000/api/users/register", user, 
             {
                 withCredentials: true,
             },

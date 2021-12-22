@@ -4,10 +4,10 @@ import axios from 'axios';
 
 const Navbar = props => {
 
-const {id} = props;
+const id = localStorage.getItem('userid');
 
 const logout = (e) =>{
-    axios.post("http://localhost:8000/api/users/logout",{},{withCredentials: true})
+    axios.post("http://linuxhome:8000/api/users/logout",{},{withCredentials: true})
     .then((res) =>{
         localStorage.removeItem('userid')
         navigate("/")
@@ -25,6 +25,7 @@ return (
                     <ul style={{listStyle: 'none'}}>
                         <li>
                             <Link className="btn btn-primary btn-lg" to={`/new/${id}`}>Create New Workout</Link> || 
+                            <Link className="btn btn-primary btn-lg" to={`/user/profile/${id}`}>Home</Link> || 
                             <button className="btn btn-primary btn-lg" onClick={logout}>Logout</button>
                         </li>
                     </ul>

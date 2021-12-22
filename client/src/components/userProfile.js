@@ -12,9 +12,10 @@ const UserProfile = (props) => {
     const { id } = props;
     //all workouts where userid matches logged user id 
     const userWorkouts = workouts.filter(workout => workout.userid === id)
+    const files = 'http://linuxhome:8000/api/files/';  
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/users/${id}`)
+        axios.get(`http://linuxhome:8000/api/users/${id}`)
         .then((res) => {
             console.log("Getting profile for " + res.data.firstName, res.data.lastName);
             setUser(res.data);
@@ -26,7 +27,7 @@ const UserProfile = (props) => {
 
     useEffect(() => {
         axios 
-            .get(`http://localhost:8000/api/workouts/all/${id}`)
+            .get(`http://linuxhome:8000/api/workouts/all/${id}`)
             .then((res) => {
                 console.log("Loading all workouts")
                 setWorkouts(res.data)
@@ -36,6 +37,10 @@ const UserProfile = (props) => {
                 console.log(err)
             })
     }, [])
+
+    const getDetails = (e) => {
+        console.log(e.target.name);
+    }
 
     return (
         <div>
@@ -49,7 +54,21 @@ const UserProfile = (props) => {
                         </div>
                     </div>
                 </header>
-            {/* User before photo */}
+            {/* User before photo */} 
+            <div className="d-flex justify-content-around">
+                <div class="card" style={{ width: "12rem" }}>
+                    <img className="card-img-top rounded" src={files + user.beforePicture} alt="Before Picture" />
+                    <div class="card-body">
+                        <h5>Before Picture</h5>
+                    </div>
+                </div>
+                <div class="card" style={{ width: "12rem" }}>
+                    <img className="card-img-top rounded" src={files + user.afterPicture} alt="After Picture" />  
+                    <div class="card-body">
+                        <h5>After Picture</h5>
+                    </div>
+                </div>                    
+            </div> 
             {/* User after photo */}
             <br/>
             <br/>
@@ -77,6 +96,7 @@ const UserProfile = (props) => {
                 <tbody>
                 {userWorkouts.map((workout, index) => (
                     <tr key={index}>
+                        <td><Link to={`/workouts/${workout._id}`} className="btn btn-primary btn-sm">Details</Link></td>
                         <td>{workout.name}</td>
                         <td>{workout.type}</td>
                         <td>{workout.duration}</td>
