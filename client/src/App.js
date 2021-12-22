@@ -1,23 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import Login from "./components/login";
+import Register from "./components/register"
+import Summary from "./components/summary"
+import UserProfile from './components/userProfile';
+import NewWorkout from './components/NewWorkout';
+import EditWorkout from './components/EditWorkout';
+import { Router } from '@reach/router';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Login path="/" />
+        <Register path="/register"/>
+        <EditWorkout path="/workouts/:id/update"/>
+        <NewWorkout path="/new/:userid"/>
+        <UserProfile path="/user/profile/:id"/>
+        <Summary path="workouts/:id"/>
+      </Router>
     </div>
   );
 }
