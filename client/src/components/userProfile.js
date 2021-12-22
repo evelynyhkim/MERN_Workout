@@ -53,28 +53,39 @@ const UserProfile = (props) => {
             {/* User after photo */}
             <br/>
             <br/>
-            <PhotoUpload />
+            <p>
+                <button className="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    Add your before/after pictures!
+                </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <PhotoUpload />
+                </div>
+            </div>
+            <div>
             <h3>Your Workouts</h3>
-            <table>
+            </div>
+            <div>
+            <table className="table">
                 <thead>
-                    <th>Name</th>
-                    <th>Date</th>
-                    <th>Type</th>
-                    <th>Duration</th>
-                    <th>Actions</th>
+                    <th scope="col1">Name</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Duration</th>
+                    <th scope="col">Actions</th>
                 </thead>
                 <tbody>
                 {userWorkouts.map((workout, index) => (
                     <tr key={index}>
                         <td>{workout.name}</td>
-                        <td>{workout.date}</td>
                         <td>{workout.type}</td>
                         <td>{workout.duration}</td>
-                        <div> <Link to={`/workouts/${workout._id}/update`} className="btn btn-primary btn-lg">Edit</Link></div>
+                        <td> <Link to={`/workouts/${workout._id}/update`} className="btn btn-primary btn-sm">Edit</Link></td>
                     </tr>
                 ))}
                 </tbody>
             </table>
+            </div>
         </div>
     )
 }

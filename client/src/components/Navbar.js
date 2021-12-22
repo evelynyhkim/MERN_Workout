@@ -24,7 +24,6 @@ return (
                 <div>
                     <ul style={{listStyle: 'none'}}>
                         <li>
-                            <Link className="btn btn-primary btn-lg" to="/home">Home</Link> || 
                             <Link className="btn btn-primary btn-lg" to={`/new/${id}`}>Create New Workout</Link> || 
                             <button className="btn btn-primary btn-lg" onClick={logout}>Logout</button>
                         </li>
