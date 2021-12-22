@@ -10,7 +10,7 @@ const UserProfile = (props) => {
     const userWorkouts = workouts.filter(workout => workout.userid === id)
 
     useEffect(() => {
-        axios.get(`http://linuxhome:8000/api/users/${id}`)
+        axios.get(`http://localhost:8000/api/users/${id}`)
         .then((res) => {
             console.log("Getting profile for " + res.data.firstName, res.data.lastName);
             setUser(res.data);
@@ -22,7 +22,7 @@ const UserProfile = (props) => {
 
     useEffect(() => {
         axios 
-            .get('http://linuxhome:8000/api/workouts/all')
+            .get('http://localhost:8000/api/workouts/all')
             .then((res) => {
                 console.log("Loading all workouts")
                 setWorkouts(res.data)
@@ -35,7 +35,7 @@ const UserProfile = (props) => {
 
     return (
         <div>
-            <h1>{user.firstName} {user.lastName}'s profile</h1>
+            <h1>Welcome {user.firstName} {user.lastName}</h1>
             {/* User before photo */}
             {/* User after photo */}
             <br/>

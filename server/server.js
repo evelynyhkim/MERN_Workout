@@ -7,7 +7,7 @@ const app = express();
 ///const { authenticate } = require('./config/jwt.config');
 
 global.__basedir = __dirname;
-console.log(__dirname);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());

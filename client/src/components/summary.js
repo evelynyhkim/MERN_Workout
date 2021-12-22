@@ -6,7 +6,7 @@ const Summary = (props) => {
     const [workout, setWorkout] = useState({});
 
     useEffect(() => {
-        axios.get(`http://linuxhome:8000/api/workouts/${id}`)
+        axios.get(`http://localhost:8000/api/workouts/${id}`)
             .then((res) => {
                 console.log(res.data);
                 setWorkout(res.data);

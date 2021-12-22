@@ -9,7 +9,7 @@ const Login = (props) => {
 
     const login = (event) => {
         event.preventDefault();
-        axios.post("http://linuxhome:8000/api/users/login", {
+        axios.post("http://localhost:8000/api/users/login", {
             email: email,
             password: password,
         },
