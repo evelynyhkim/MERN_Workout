@@ -14,7 +14,7 @@ const PhotoUpload = (props) => {
     const [errors, setErrors] = useState('');  
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/users/${userID}`)
+        axios.get(`http://linuxhome:8000/api/users/${userID}`)
             .then((res) => {                
                 setSelectedUser(res.data);
                 //console.log(res.data);
@@ -30,7 +30,7 @@ const PhotoUpload = (props) => {
 
     const sendData = (name) => {       
 
-        axios.put(`http://localhost:8000/api/users/${userID}/update`, selectedUser, { withCredentials: true })  //api/users/:id/update
+        axios.put(`http://linuxhome:8000/api/users/${userID}/update`, selectedUser, { withCredentials: true })  //api/users/:id/update
         .then((res) => {                           
             fileUpload(name);              
         })
@@ -57,7 +57,7 @@ const PhotoUpload = (props) => {
             formData.append(fileNames[0], afterPic[0]);                      
         }
 
-        const postUrl = 'http://localhost:8000/api/upload/'
+        const postUrl = 'http://linuxhome:8000/api/upload/'
 
         axios.post(postUrl, formData, config)
         .then((res)=>{               
