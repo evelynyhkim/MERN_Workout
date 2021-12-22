@@ -66,7 +66,6 @@ const NewWorkout = (props)=>{
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
                     <input
-                    className="form-control"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         name="name"

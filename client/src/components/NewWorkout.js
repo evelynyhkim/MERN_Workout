@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link, navigate} from '@reach/router';
 
 const NewWorkout = (props)=>{
+    const userid = localStorage.getItem("userid")
     const [errors, setErrors] = useState({});
 
     const [name, setName] = useState("");
@@ -17,7 +18,6 @@ const NewWorkout = (props)=>{
 
     const submitHandler = (e)=>{
         e.preventDefault();
-
         axios
             .post(
                 "http://localhost:8000/api/workouts/new",
@@ -28,14 +28,15 @@ const NewWorkout = (props)=>{
                     description,
                     duration,
                     caloriesBurnt,
-                    id
+                    userid
                 },
                 { withCredentials: true },
             )
             .then((res) => {
                 console.log(res);
                 console.log(res.data);
-                navigate(`/user/profile/${id}`);
+                // const userid = localStorage.getItem("userid")
+                navigate(`/user/profile/${userid}`);
             })
             .catch((err) => {
                 console.log("err: ", err);
@@ -51,11 +52,11 @@ const NewWorkout = (props)=>{
                 <div className="form-group">
                     <label htmlFor="name">Name</label>
                     <input
-                    className="form-control"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         name="name"
                         type="text"
+                        
                     />
                     <br />
                     {errors.name ? <span>{errors.name.message}</span> : null}

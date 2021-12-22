@@ -3,7 +3,7 @@ import axios from "axios";
 import { navigate } from "@reach/router";
 
 const PhotoUpload = (props) => {
-    const { userID } = props;
+    const userID = localStorage.getItem('userid');
     const [selectedUser, setSelectedUser] = useState({
         beforePicture: '',
         afterPicture: ''
