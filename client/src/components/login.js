@@ -20,6 +20,7 @@ const Login = (props) => {
             .then((res) => {
                 console.log(res, "res")
                 console.log(res.data, "is res data!")
+                localStorage.setItem("userid", res.data.userId);
                 navigate(`/user/profile/${res.data.userId}`, { state: { idForNav: res.data.userId } });
             })
             .catch((err) => {
