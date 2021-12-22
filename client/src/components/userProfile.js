@@ -7,7 +7,7 @@ import Navbar from './Navbar';
 
 const UserProfile = (props) => {
     const [user, setUser] = useState([]);
-    const [workouts, setWorkouts] = useState([]);
+    const [workouts, setWorkouts] = useState([]);   
     //logged in userId
     const { id } = props;
     //all workouts where userid matches logged user id 

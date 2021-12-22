@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import { navigate } from '@reach/router';
+import { navigate, Link } from '@reach/router';
 
 const Login = (props) => {
     const [email, setEmail] = useState("");
@@ -31,32 +31,40 @@ const Login = (props) => {
 
     return (
         <div>
-            <h1>Welcome please Sign in or Register</h1>
-            <p className="error-text">{errorMessage ? errorMessage : ""}</p>
-            <form onSubmit={login}>
-                <div>
-                    <label>Email</label>
-                    <input
-                        type="text"
-                        name="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label>Password</label>
-                    <input
-                        type="password"
-                        name="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <div className="center">
-                    <button type="submit">Sign In</button>
-                    <button><a href="/register">Register</a></button>
-                </div>
-            </form>
+            <h1 className="mt-5">Welcome please Sign in or Register</h1>
+            <div style={{ maxWidth: "500px",
+                          width: "40%",
+                          marginRight: "auto",
+                          marginLeft: "auto"        
+                    }}>           
+                <p className="error-text">{errorMessage ? errorMessage : ""}</p>
+                <form onSubmit={login}>
+                    <div className="d-flex align-items-center">
+                        <label className="form-label flex-1 text-end me-2 fs-3">Email:</label>
+                        <input
+                            className="form-control flex-2"
+                            type="text"
+                            name="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div className="d-flex align-items-center">
+                        <label className="form-label flex-1 text-end me-2 fs-3">Password:</label>
+                        <input
+                            className="form-control flex-2"
+                            type="password"
+                            name="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <div className="center">
+                        <button className="btn btn-secondary mt-3 ms-3" type="submit">Sign In</button>
+                        <button className="btn btn-secondary mt-3 ms-3"><Link className="text-decoration-none text-white" to="/register">Register</Link></button>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
